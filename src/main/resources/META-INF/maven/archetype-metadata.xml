@@ -1,0 +1,38 @@
+<archetype-descriptor xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.0.0 http://maven.apache.org/xsd/archetype-descriptor-1.0.0.xsd"
+	xmlns="http://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.0.0"
+	name="archetype-oso-servlet-manage" partial="true">
+
+	<requiredProperties>
+		<requiredProperty key="openshift.origin.domain">
+			<!-- typically rhcloud.com -->
+			<defaultValue>${env.OPENSHIFT_CLOUD_DOMAIN}</defaultValue>
+		</requiredProperty>
+
+		<!-- OpenShift application developer properties -->
+		
+		<requiredProperty key="app.openshift.name">
+			<defaultValue>${env.OPENSHIFT_APP_NAME}</defaultValue>
+		</requiredProperty>
+		<requiredProperty key="app.openshift.namespace">
+			<defaultValue>${env.OPENSHIFT_NAMESPACE}</defaultValue>
+		</requiredProperty>
+		<requiredProperty key="app.user.domain">
+			<defaultValue>com.example</defaultValue>
+		</requiredProperty>
+
+		<!-- OpenShift application properties -->
+		
+		<requiredProperty key="app.openshift.uuid">
+			<defaultValue>${env.OPENSHIFT_GEAR_UUID}</defaultValue>
+		</requiredProperty>
+		<requiredProperty key="app.openshift.domain">
+			<!-- alternately ${env.OPENSHIFT_APP_DNS} -->
+			<defaultValue>${app.openshfit.name}-${app.openshift.namesapce}.${openshift.origin.domain}</defaultValue>
+		</requiredProperty>
+		<requiredProperty key="app.openshift.git">
+			<defaultValue>ssh://${app.openshift.uid}@${app.openshift.domain}</defaultValue>
+		</requiredProperty>
+		
+	</requiredProperties>
+</archetype-descriptor>
